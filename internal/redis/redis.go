@@ -7,12 +7,17 @@ import (
 var redisClient *redis.Client
 
 func Connect() error {
-	
-	err := getConnection();
+
+	err := getConnection()
 	if err != nil {
 		return err
 	}
-	
+
+	err = verifyConnection()
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -22,5 +27,3 @@ func Close() error {
 	}
 	return nil
 }
-
-
